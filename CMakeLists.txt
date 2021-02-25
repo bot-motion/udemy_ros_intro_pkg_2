@@ -18,6 +18,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -31,11 +32,14 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(cpp_node src/my_first_node.cpp)
+add_executable(robot_news_station src/robot_news_station.cpp)
 
 # link dependencies
 ament_target_dependencies(cpp_node rclcpp)
+ament_target_dependencies(robot_news_station rclcpp example_interfaces)
+
 
 # install the node 
-install(TARGETS cpp_node DESTINATION lib/${PROJECT_NAME})
+install(TARGETS cpp_node robot_news_station DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
