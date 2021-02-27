@@ -35,14 +35,19 @@ add_executable(cpp_node src/my_first_node.cpp)
 add_executable(robot_news_station src/robot_news_station.cpp)
 add_executable(smartphone src/smartphone.cpp)
 
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+
 
 # link dependencies
 ament_target_dependencies(cpp_node rclcpp)
 ament_target_dependencies(robot_news_station rclcpp example_interfaces)
 ament_target_dependencies(smartphone rclcpp example_interfaces)
+ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
+ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 
 
 # install the node 
-install(TARGETS cpp_node robot_news_station smartphone DESTINATION lib/${PROJECT_NAME})
+install(TARGETS cpp_node robot_news_station smartphone add_two_ints_server add_two_ints_client DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
